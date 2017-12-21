@@ -14,7 +14,7 @@ Displays ASEAG departures served by an MQTT server
 5. Have fun!
 
 ### Why MQTT?
-Because I use the departure times at multiple systems and for multiple purposes. To avoid multiples requests to ASEAG servers, I download the data and publish it on my private MQTT server in my network
+Because I use the departure times at multiple systems and for multiple purposes. To avoid multiple requests to ASEAG servers, I download the data and publish it on my private MQTT server in my network
 
 ### I don't want to setup MQTT
 Great! You can use services like test.mosquitto.org. I propose to publish the data to the following topic: `aseag/departures/[Stop name]`. This way others can use the data as well

@@ -1,0 +1,35 @@
+#stop_name {
+  background-color: red;
+  color:white;
+  font-size:3em;
+}
+
+#departures {
+  table-layout : fixed;
+  width:100%;
+}
+
+#departures td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: #CCC
+}
+
+tr:nth-child(odd) {
+  background: #FFF
+}
+
+.soon {
+  color:#730000;
+}
+
+.next {
+  color:red;
+}
+
+table {
+  border:none;
+  font-size:1.2em;
+}

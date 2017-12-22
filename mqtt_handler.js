@@ -50,6 +50,7 @@ function onMessageArrived(message) {
     var topic = message.destinationName;
     var payload = message.payloadString;
     var payload_decoded = $.parseJSON(payload)
+    var now = new Date()
 
     for (n=payload_decoded.length; n>1; n--) {
       for (i=0; i<n-1; i++) {
@@ -88,6 +89,8 @@ function onMessageArrived(message) {
         $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>Jetzt</td></tr>');
         $( "tr" ).last().addClass("next");
       }
+
+      $('#last_refresh').text(('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2))
     })
 };
 

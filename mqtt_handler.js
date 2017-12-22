@@ -66,6 +66,9 @@ function onMessageArrived(message) {
         } else if (remaining_minutes <= 10) {
           $( "tr" ).last().addClass("soon");
         }
+      } else if (remaining_minutes == 0) {
+        $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>Jetzt</td></tr>');
+        $( "tr" ).last().addClass("next");
       }
     })
 };

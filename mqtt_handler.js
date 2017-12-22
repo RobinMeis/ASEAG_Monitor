@@ -54,16 +54,18 @@ function onMessageArrived(message) {
     payload_decoded.forEach(function (departure) {
       departure_expected = new Date(departure["expectedTime"])
       remaining_minutes = Math.floor((departure_expected - Date.now()) /1000/ 60)
-      if (departure["realtime"] == true) {
-        $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>' + remaining_minutes + ' Min</td></tr>');
-      } else {
-        $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>' + ('0' + departure_expected.getHours()).slice(-2) + ':' + ('0' + departure_expected.getMinutes()).slice(-2) + '</td></tr>');
-      }
+      if (remaining_minutes > 0) {
+        if (departure["realtime"] == true) {
+          $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>' + remaining_minutes + ' Min</td></tr>');
+        } else {
+          $('#departures').append('<tr><td>' + departure["route"]["name"] + '</td><td>' + departure["destinationStage"]["name"] + '</td><td>' + ('0' + departure_expected.getHours()).slice(-2) + ':' + ('0' + departure_expected.getMinutes()).slice(-2) + '</td></tr>');
+        }
 
-      if (remaining_minutes <= 5) {
-        $( "tr" ).last().addClass("next");
-      } else if (remaining_minutes <= 10) {
-        $( "tr" ).last().addClass("soon");
+        if (remaining_minutes <= 5) {
+          $( "tr" ).last().addClass("next");
+        } else if (remaining_minutes <= 10) {
+          $( "tr" ).last().addClass("soon");
+        }
       }
     })
 };

@@ -50,6 +50,24 @@ function onMessageArrived(message) {
     var topic = message.destinationName;
     var payload = message.payloadString;
     var payload_decoded = $.parseJSON(payload)
+
+    for (n=payload_decoded.length; n>1; n--) {
+      for (i=0; i<n-1; i++) {
+        if (payload_decoded[i]["expectedTime"] == null) time_i = Date.parse(payload_decoded[i]["plannedTime"])
+        else time_i = new Date(payload_decoded[i]["expectedTime"])
+
+        if (payload_decoded[i+1]["expectedTime"] == null) time_ii = Date.parse(payload_decoded[i+1]["plannedTime"])
+        else time_ii = new Date(payload_decoded[i+1]["expectedTime"])
+        if (time_i > time_ii) {
+          if (payload_decoded[i]["expectedTime"] == null) payload_decoded[i]["plannedTime"] = time_ii
+          else payload_decoded[i]["expectedTime"] = time_ii
+
+          if (payload_decoded[i+1]["expectedTime"] == null) payload_decoded[i]["plannedTime"] = time_i
+          else payload_decoded[i+1]["expectedTime"] = time_i
+        }
+      }
+    }
+
     $('#departures').html("<tr><th>Linie</th><th>Richtung</th><th>Abfahrt</th></tr>");
     payload_decoded.forEach(function (departure) {
       departure_expected = new Date(departure["expectedTime"])

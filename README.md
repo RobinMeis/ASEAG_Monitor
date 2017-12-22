@@ -9,9 +9,10 @@ Displays ASEAG departures served by an MQTT server
 ### Installation
 1. Download and configure aseag2mqtt.py. Make sure to run it every few minutes
 2. Download ASEAG_Monitor
-3. Extract it to a webpage directory (Accessing using HTTP is required for websockets to work)
-4. Configure ASEAG_Monitor using config.js
-5. Have fun!
+3. Extract it to a webpage directory (Might require to be accessed using HTTP for websockets to work)
+4. Copy config-example.js to config.js
+5. Configure ASEAG_Monitor using config.js
+6. Have fun!
 
 ### Why MQTT?
 Because I use the departure times at multiple systems and for multiple purposes. To avoid multiple requests to ASEAG servers, I download the data and publish it on my private MQTT server in my network
